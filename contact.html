@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contactform</title>
+    <script src="https://kit.fontawesome.com/62455c1fa3.js" crossorigin="anonymous"></script> 
+    <style>
+        body{
+            margin:0;
+            padding: 0;
+            background:linear-gradient(black,#402D16) ;
+        }
+        .container {
+            background-color:rgba(0, 0, 0, 0.778);
+            width: 60%;
+            height: 95vh;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+        h2{
+     background-color:rgba(0, 0, 0, 0.778);
+     color: #B8860B;
+        }
+        .content{
+            text-align: left;
+            padding-left: 25px;
+            color:white;
+            background-color:rgba(0, 0, 0, 0.778);
+        }
+        span{
+            color:#B8860B;
+        }
+        .inner{
+            border:2px solid #B8860B ;
+            width: 55%;
+            height: 65vh;
+            margin-top: 50px;
+        }
+        .form{
+            text-align: left;
+            padding: 15px 15px;
+            color: white;
+        }
+        #button{
+            color: black;
+            font-size: large;
+            padding: 5px 5px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        #button:hover{
+            background-color:#B8860B;
+            color: black;
+            cursor: pointer;
+            box-shadow: #B8860B;
+        }
+        .forms{
+            border: 3px solid #B8860B;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="content">
+            Owner Name: <span>Shaik Karimulla</span> <br> <br>
+            <i class="fa-solid fa-phone"></i>Phone:<span>+91 9849279109</span> <br> <br>
+            <i class="fa-solid fa-phone"></i>Phone:<span>+91 7671009706</span> <br><br>  
+        </div>
+        <center>
+        <div class="inner">
+          
+                <div class="form">
+            <form onsubmit="sendEmail(); reset(); return false;">
+               First Name: <input type="text" id="fname" class="forms" placeholder="Enter firstname"> <br> <br>
+               Last Name: <input type="text" id="lname" class="forms" placeholder="Enter lastname"> <br> <br>
+                Phone Number: <input type="text" id="number" class="forms" placeholder="+91 xxxxxxxxxx"> <br> <br>
+                Email: <input type="email" name="email" id="email"placeholder="example@gmail.com" class="forms"><br> <br>
+Message: <br><textarea rows="5" cols="50" id="message" placeholder="write all your doubts and any information u want to know" class="forms" ></textarea> <br><br> <br>
+
+                <button id="button" type="submit">Submit</button>
+            </form>
+        </div>
+        </center>
+        </div>
+    </div>
+</center>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script type="text/javascript">
+    function sendEmail(){
+        Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "kaif.presi@gmail.com",
+    Password : "C8B206D52C44B04888549766B04CAF7C2FC8",
+    To :  "mohammadkaif.svs@gmail.com" ,//document.getElementById("email").value
+    From :'kaif.presi@gmail.com',         
+    Subject : "Custamer Contact form",
+    Body : "First Name:"+document.getElementById("fname").value+"<br>Last Name:"+document.getElementById("lname").value+"<br> Email:"
+    +document.getElementById("email").value+"<br> Phone Number:"+document.getElementById("number").value+"<br>Message:"+document.getElementById("message").value
+}).then(
+  message => alert("message sent successfully")
+);
+    }
+</script>
+</body>
+</html>
